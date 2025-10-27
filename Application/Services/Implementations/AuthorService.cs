@@ -63,7 +63,9 @@ namespace BookCatalog.Application.Services.Implementatios
                 return ServiceResponse<AuthorDTO>.Fail("Author data is required.");
             }
 
-            if (string.IsNullOrWhiteSpace(CreateAuthorDTO.Name))
+            var TrimmedAuthorName = CreateAuthorDTO.Name.Trim();
+
+            if (string.IsNullOrWhiteSpace(TrimmedAuthorName))
             {
                 return ServiceResponse<AuthorDTO>.Fail("Name field cannot be null or empty.");
             }
@@ -74,6 +76,8 @@ namespace BookCatalog.Application.Services.Implementatios
             {
                 return ServiceResponse<AuthorDTO>.Fail($"Author with name - '{ CreateAuthorDTO.Name}' already exists.", 409);
             }
+
+            CreateAuthorDTO.Name = TrimmedAuthorName;
 
             var author = CreateAuthorDTO.ToAuthorEntity();
 

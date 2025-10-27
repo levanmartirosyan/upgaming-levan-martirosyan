@@ -95,6 +95,13 @@ namespace BookCatalog.Application.Services.Implementatios
                 return ServiceResponse<BookDTO>.Fail($"Book with title - '{createBookDTO.Title}' already exists.", 409);
             }
 
+            var author = await _authorService.GetAuthorById(createBookDTO.AuthorId);
+
+            if (!author.IsSuccess)
+            {
+                return ServiceResponse<BookDTO>.Fail($"Author with ID - '{createBookDTO.AuthorId}' not found.", 404);
+            }
+
             var book = createBookDTO.ToBookEntity();
 
             await  _bookRepository.AddBook(book);
