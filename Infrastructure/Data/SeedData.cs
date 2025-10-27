@@ -6,11 +6,13 @@ namespace BookCatalog.Infrastructure.Data
     {
         public static void Initialize(ApplicationDbContext context)
         {
+            // Exit early if data already exists (prevents duplicate seeding)
             if (context.Authors.Any() || context.Books.Any())
             {
                 return;
             }
 
+            // Create initial authors
             var authors = new Author[]
             {
                 new Author { Id = 1, Name = "Robert C. Martin" },
@@ -20,6 +22,7 @@ namespace BookCatalog.Infrastructure.Data
             context.Authors.AddRange(authors);
             context.SaveChanges();
 
+            // Create initial books linked to authors
             var books = new Book[]
             {
                 new Book { Id = 1, Title = "Clean Code", AuthorID = 1, PublicationYear = 2008 },

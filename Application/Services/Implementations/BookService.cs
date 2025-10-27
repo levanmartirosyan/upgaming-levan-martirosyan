@@ -19,20 +19,26 @@ namespace BookCatalog.Application.Services.Implementatios
             _authorService = authorService;
         }
 
+        // Get Book List
         public async Task<ServiceResponse<List<BookDTO>>> GetAllBooks(BookFilterParams filterParams)
         {
+            // Fetch books from repository using filter parameters
             var books = await _bookRepository.GetAllBooks(filterParams);
 
+            // If there are no books, return a fail response with 404 status
             if (!books.Any())
             {
                 return ServiceResponse<List<BookDTO>>.Fail("No books found", 404);
             }
-            
+
+            // Map Book entities to DTOs
             var bookDTO = books.ToBookDTOList();
 
+            // Return success response with the list of BookDTOs
             return ServiceResponse<List<BookDTO>>.Success(bookDTO);
         }
 
+        // Get a single book by ID
         public async Task<ServiceResponse<BookDTO>> GetBookById(int bookId)
         {
             if (bookId <= 0)
@@ -52,6 +58,7 @@ namespace BookCatalog.Application.Services.Implementatios
             return ServiceResponse<BookDTO>.Success(bookDTO);
         }
 
+        // Get all books written by a specific author
         public async Task<ServiceResponse<List<BookDTO>>> GetBooksByAuthorId(int authorId)
         {
             var author = await _authorService.GetAuthorById(authorId);
@@ -73,6 +80,7 @@ namespace BookCatalog.Application.Services.Implementatios
             return ServiceResponse<List<BookDTO>>.Success(bookDTO);
         }
 
+        // Create a new book
         public async Task<ServiceResponse<BookDTO>> CreateBook(CreateBookDTO createBookDTO)
         {
             if (createBookDTO == null)
@@ -103,6 +111,7 @@ namespace BookCatalog.Application.Services.Implementatios
             return ServiceResponse<BookDTO>.Success(bookDTO, 201);
         }
 
+        // Update an existing book
         public async Task<ServiceResponse<BookDTO>> UpdateBook(UpdateBookDTO updateBookDTO)
         {
             if (updateBookDTO == null)
@@ -147,6 +156,7 @@ namespace BookCatalog.Application.Services.Implementatios
             return ServiceResponse<BookDTO>.Success(bookDTO);
         }
 
+        // Delete a book by ID
         public async Task<ServiceResponse<BookDTO>> DeleteBook(int bookId)
         {
             if (bookId <= 0)

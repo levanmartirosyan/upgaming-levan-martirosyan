@@ -27,19 +27,24 @@ builder.Services.AddScoped<IBookService, BookService>();
 
 var app = builder.Build();
 
+// Create a scoped service provider for one-time setup tasks
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     try
     {
+        // Retrieve the ApplicationDbContext from DI
         var context = services.GetRequiredService<ApplicationDbContext>();
 
+        // Ensure the in-memory database is created
         context.Database.EnsureCreated();
 
+        // Seed initial data into the database (authors, books, etc.)
         SeedData.Initialize(context);
     }
     catch (Exception ex)
     {
+        // Log any errors that occur during seeding
         var logger = services.GetRequiredService<ILogger<Program>>();
 
         logger.LogError(ex, "An error occurred seeding the DB.");
