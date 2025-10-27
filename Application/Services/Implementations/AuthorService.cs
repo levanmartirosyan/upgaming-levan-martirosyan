@@ -88,7 +88,7 @@ namespace BookCatalog.Application.Services.Implementatios
 
             var authorDTO = author.ToAuthorDTO();
 
-            return ServiceResponse<AuthorDTO>.Success(authorDTO);
+            return ServiceResponse<AuthorDTO>.Success(authorDTO, 201);
         }
 
         // Author Deleting

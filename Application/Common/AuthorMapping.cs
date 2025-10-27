@@ -5,6 +5,7 @@ namespace BookCatalog.Application.Common
 {
     public static class AuthorMapping
     {
+        // Entity To DTO
         public static AuthorDTO ToAuthorDTO(this Author author)
         {
             return new AuthorDTO
@@ -14,6 +15,7 @@ namespace BookCatalog.Application.Common
             };
         }
 
+        // Create DTO To Entity
         public static Author ToAuthorEntity(this CreateAuthorDTO dto)
         {
             return new Author
@@ -22,6 +24,7 @@ namespace BookCatalog.Application.Common
             };
         }
 
+        // List<Entity> To List<DTO>
         public static List<AuthorDTO> ToAuthorDTOList(this List<Author> authors)
         {
             return authors.Select(a => a.ToAuthorDTO()).ToList();

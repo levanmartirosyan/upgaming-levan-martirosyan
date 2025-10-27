@@ -5,11 +5,11 @@ namespace BookCatalog.Application.Services.Interfaces
 {
     public interface IBookService
     {
-        Task<ServiceResponse<BookDTO>> GetAllBooks();
+        Task<ServiceResponse<List<BookDTO>>> GetAllBooks(BookFilterParams filterParams);
         Task<ServiceResponse<BookDTO>> GetBookById(int bookId);
-        Task<ServiceResponse<BookDTO>> GetBookByAuthorId(int authorId);
-        Task<ServiceResponse<CreateBookDTO>> CreateBook(CreateBookDTO createBookDTO);
-        Task<ServiceResponse<bool>> UpdateBook(UpdateBookDTO updateBookDTO);
-        Task<ServiceResponse<bool>> DeleteBook(int bookId);
+        Task<ServiceResponse<List<BookDTO>>> GetBooksByAuthorId(int authorId);
+        Task<ServiceResponse<BookDTO>> CreateBook(CreateBookDTO createBookDTO);
+        Task<ServiceResponse<BookDTO>> UpdateBook(UpdateBookDTO updateBookDTO);
+        Task<ServiceResponse<BookDTO>> DeleteBook(int bookId);
     }
 }
