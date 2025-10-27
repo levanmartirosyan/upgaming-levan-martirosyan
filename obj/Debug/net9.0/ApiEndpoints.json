@@ -1,0 +1,126 @@
+[
+  {
+    "ContainingType": "BookCatalog.Api.Controllers.AuthorController",
+    "Method": "GetAuthorById",
+    "RelativePath": "api/author/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BookCatalog.Application.Common.ServiceResponse\u00601[[BookCatalog.Application.DTOs.AuthorDTO, BookCatalog, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BookCatalog.Api.Controllers.AuthorController",
+    "Method": "Create",
+    "RelativePath": "api/author/add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "BookCatalog.Application.DTOs.CreateAuthorDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BookCatalog.Application.Common.ServiceResponse\u00601[[BookCatalog.Application.DTOs.AuthorDTO, BookCatalog, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BookCatalog.Api.Controllers.AuthorController",
+    "Method": "GetAllAuthors",
+    "RelativePath": "api/author/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "BookCatalog.Application.Common.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[BookCatalog.Application.DTOs.AuthorDTO, BookCatalog, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BookCatalog.Api.Controllers.AuthorController",
+    "Method": "Delete",
+    "RelativePath": "api/author/delete",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BookCatalog.Application.Common.ServiceResponse\u00601[[BookCatalog.Application.DTOs.AuthorDTO, BookCatalog, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BookCatalog.Api.Controllers.AuthorController",
+    "Method": "Update",
+    "RelativePath": "api/author/edit",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "BookCatalog.Application.DTOs.AuthorDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BookCatalog.Application.Common.ServiceResponse\u00601[[BookCatalog.Application.DTOs.AuthorDTO, BookCatalog, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]
